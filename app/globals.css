@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #000000;
+  --color-secondary: #ffffff;
+}
+
+@layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    @apply bg-[#fcfcfc] text-black font-sans antialiased selection:bg-black selection:text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .clean-card {
+    @apply bg-white rounded-3xl border border-gray-300 transition-all hover:border-black;
+  }
+
+  .action-button {
+    @apply inline-flex items-center justify-center rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-gray-800 active:scale-95;
+  }
+
+  .secondary-button {
+    @apply inline-flex items-center justify-center rounded-full border border-gray-200 bg-white px-6 py-3 text-sm font-semibold text-black transition-all hover:bg-gray-50 active:scale-95;
+  }
+}
