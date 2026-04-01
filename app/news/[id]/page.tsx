@@ -6,6 +6,15 @@ import Image from 'next/image';
 import { Calendar, Tag, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
 
+// 关键：为了支持 GitHub Pages 静态导出，必须添加这个函数
+export async function generateStaticParams() {
+  const query = `*[_type == "newsItem" && hasDetail == true]{ _id }`;
+  const items = await client.fetch(query);
+  return items.map((item: any) => ({
+    id: item._id,
+  }));
+}
+
 export default async function NewsDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 

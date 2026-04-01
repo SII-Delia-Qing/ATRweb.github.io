@@ -6,6 +6,15 @@ import Image from 'next/image';
 import { Mail, ChevronLeft, Globe } from 'lucide-react';
 import Link from 'next/link';
 
+// 关键：为了支持 GitHub Pages 静态导出，必须添加这个函数
+export async function generateStaticParams() {
+  const query = `*[_type == "teamMember" && (hasDetailPage == true || defined(websiteUrl))]{ _id }`;
+  const members = await client.fetch(query);
+  return members.map((member: any) => ({
+    id: member._id,
+  }));
+}
+
 export default async function MemberDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
@@ -15,10 +24,6 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
   if (!member || (!member.hasDetailPage && !member.websiteUrl)) {
     notFound();
   }
-
-  // If it has a websiteUrl, we should probably redirect or just show a link, 
-  // but the logic in the list page already handles the link. 
-  // This page is specifically for internal detail pages.
 
   const components = {
     types: {
