@@ -37,7 +37,7 @@ export default function HeroCarousel() {
     <div className="w-full border-b border-gray-300 bg-white">
       <div className="relative w-full overflow-hidden bg-white border-gray-300">
         {/* 21:9 Aspect Ratio Container for Hero */}
-        <div className="relative aspect-[21/9] w-full">
+        <div className="relative aspect-[16/9] w-full">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
@@ -72,13 +72,16 @@ export default function HeroCarousel() {
                   transition={{ delay: 0.3, duration: 0.8 }}
                   className="space-y-6"
                 >
-                  <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-white leading-[1.5]">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
                     Welcome to
                     <br />
                     Ani-Thing Robotics Lab
                   </h1>
                   <div className="pt-4">
-                    <Link href="/research" className="inline-flex items-center justify-center rounded-full bg-black border border-white px-8 py-3 text-sm font-semibold text-white transition-all hover:bg-white hover:text-black active:scale-95">
+                    <Link
+                      href="/research"
+                      className="inline-flex items-center justify-center rounded-full bg-black border border-white px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white hover:text-black active:scale-95"
+                    >
                       Explore Research
                     </Link>
                   </div>
@@ -89,7 +92,7 @@ export default function HeroCarousel() {
 
           {/* Indicators - Bottom Right, constrained to site width */}
           <div className="absolute bottom-10 left-0 right-0">
-            <div className="mx-auto flex max-w-7xl justify-end px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto flex max-w-7xl justify-center px-4 sm:px-6 lg:px-8">
               <div className="flex space-x-3">
                 {slides.map((_, index) => (
                   <button
