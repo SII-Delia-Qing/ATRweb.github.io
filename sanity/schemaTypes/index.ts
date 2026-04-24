@@ -29,6 +29,8 @@ const teamMember: SchemaTypeDefinition = {
           { title: '访问学生', value: 'visiting_student' },
           { title: '博士后', value: 'postdoc' },
           { title: '毕业生', value: 'alumni' },
+          { title: '本科实习生', value: 'intern' },
+          { title: '工程师', value: 'engineer' },
         ],
       },
       validation: (Rule) => Rule.required(),

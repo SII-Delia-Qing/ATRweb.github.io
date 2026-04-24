@@ -188,11 +188,11 @@ export default function TeamPage() {
   const pi = members.filter((m) => m.category === 'pi');
   const phdStudents = members.filter((m) => m.category === 'phd');
   const masterStudents = members.filter((m) => m.category === 'master');
-  const visitingStudents = members.filter(
-    (m) => m.category === 'visiting_student'
-  );
+  const visitingStudents = members.filter((m) => m.category === 'visiting_student');
   const postdocs = members.filter((m) => m.category === 'postdoc');
   const alumni = members.filter((m) => m.category === 'alumni');
+  const intern = members.filter((m) => m.category === 'intern');
+  const engineer = members.filter((m) => m.category === 'engineer');
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 space-y-20">
@@ -207,6 +207,8 @@ export default function TeamPage() {
       <MemberGrid title="访问学生" members={visitingStudents} columns={2} />
       <MemberGrid title="博士后" members={postdocs} columns={2} />
       <MemberGrid title="毕业生" members={alumni} columns={2} />
+      <MemberGrid title="本科实习生" members={intern} columns={2} />
+      <MemberGrid title="工程师" members={engineer} columns={2} />
 
       {members.length === 0 && (
         <div className="text-center py-20">

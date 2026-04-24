@@ -63,6 +63,11 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
     pi: '课题组导师',
     phd: '博士研究生',
     master: '硕士研究生',
+    visiting_student: '访问学生',
+    postdoc: '博士后',
+    alumni: '毕业生',
+    intern: '本科实习生',
+    engineer: '工程师',
   };
 
   return (
