@@ -23,7 +23,7 @@ const teamMember: SchemaTypeDefinition = {
       type: 'string',
       options: {
         list: [
-          { title: '课题组PI', value: 'pi' },
+          { title: '课题组导师', value: 'pi' },
           { title: '博士研究生', value: 'phd' },
           { title: '硕士研究生', value: 'master' },
           { title: '访问学生', value: 'visiting_student' },

@@ -199,7 +199,7 @@ export default function TeamPage() {
       <h1 className="sr-only">Our Team</h1>
 
       {/* PI */}
-      <MemberGrid title="课题组PI" members={pi} columns={1} />
+      <MemberGrid title="课题组导师" members={pi} columns={1} />
 
       {/* 双列 */}
       <MemberGrid title="博士研究生" members={phdStudents} columns={2} />

@@ -60,7 +60,7 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
   };
 
   const categoryMap: Record<string, string> = {
-    pi: '课题组PI',
+    pi: '课题组导师',
     phd: '博士研究生',
     master: '硕士研究生',
   };
