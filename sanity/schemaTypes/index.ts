@@ -352,6 +352,28 @@ const researchPage: SchemaTypeDefinition = {
   ],
 }
 
+const homePage: SchemaTypeDefinition = {
+  name: 'homePage',
+  title: 'HomePage Settings (首页设置)',
+  type: 'document',
+  fields: [
+    {
+      name: 'aboutTitle',
+      title: 'About Section Title (关于标题)',
+      type: 'string',
+      initialValue: '介绍｜About us',
+    },
+    {
+      name: 'aboutContent',
+      title: 'About Content (关于内容)',
+      type: 'array',
+      of: [{ type: 'text' }],
+      description: '每一段单独输入，会自动分段显示',
+      validation: (Rule) => Rule.required(),
+    },
+  ],
+}
+
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [teamMember, publication, newsItem, galleryItem, spinOff, researchArea, researchPage],
+  types: [teamMember, publication, newsItem, galleryItem, spinOff, researchArea, researchPage, homePage],
 }
