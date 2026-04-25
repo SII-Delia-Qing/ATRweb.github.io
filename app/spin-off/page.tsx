@@ -65,9 +65,7 @@ export default function SpinOffPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`flex flex-col md:flex-row gap-16 items-center ${
-                  index % 2 === 1 ? 'md:flex-row-reverse' : ''
-                }`}
+                className="flex flex-col md:flex-row gap-16 items-center"
               >
                 {/* Logo Container */}
                 <div className="w-full md:w-1/4 flex justify-center">
