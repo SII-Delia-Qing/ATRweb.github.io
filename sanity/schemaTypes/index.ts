@@ -374,6 +374,64 @@ const homePage: SchemaTypeDefinition = {
   ],
 }
 
+const homeCarousel: SchemaTypeDefinition = {
+  name: 'homeCarousel',
+  title: 'Home Carousel (首页轮播图)',
+  type: 'document',
+  fields: [
+    {
+      name: 'slides',
+      title: 'Slides (轮播项)',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'image',
+              title: 'Image (图片)',
+              type: 'image',
+              options: { hotspot: true },
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: 'alt',
+              title: 'Alt Text (图片描述)',
+              type: 'string',
+            },
+            {
+              name: 'title',
+              title: 'Title (标题 - 可选)',
+              type: 'string',
+            },
+            {
+              name: 'buttonText',
+              title: 'Button Text (按钮文字)',
+              type: 'string',
+            },
+            {
+              name: 'buttonLink',
+              title: 'Button Link (按钮链接)',
+              type: 'string',
+            },
+          ],
+        },
+      ],
+      validation: (Rule) => Rule.min(1),
+    },
+  ],
+};
+
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [teamMember, publication, newsItem, galleryItem, spinOff, researchArea, researchPage, homePage],
+  types: [
+    teamMember,
+    publication,
+    newsItem,
+    galleryItem,
+    spinOff,
+    researchArea,
+    researchPage,
+    homePage,
+    homeCarousel,
+  ],
 }
