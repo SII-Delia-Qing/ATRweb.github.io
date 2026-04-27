@@ -381,43 +381,15 @@ const homeCarousel: SchemaTypeDefinition = {
   fields: [
     {
       name: 'slides',
-      title: 'Slides (轮播项)',
+      title: 'Slides (轮播图片)',
       type: 'array',
       of: [
         {
-          type: 'object',
-          fields: [
-            {
-              name: 'image',
-              title: 'Image (图片)',
-              type: 'image',
-              options: { hotspot: true },
-              validation: (Rule) => Rule.required(),
-            },
-            {
-              name: 'alt',
-              title: 'Alt Text (图片描述)',
-              type: 'string',
-            },
-            {
-              name: 'title',
-              title: 'Title (标题 - 可选)',
-              type: 'string',
-            },
-            {
-              name: 'buttonText',
-              title: 'Button Text (按钮文字)',
-              type: 'string',
-            },
-            {
-              name: 'buttonLink',
-              title: 'Button Link (按钮链接)',
-              type: 'string',
-            },
-          ],
+          type: 'image',
+          options: { hotspot: true },
         },
       ],
-      validation: (Rule) => Rule.min(1),
+      validation: (Rule) => Rule.min(1).required(),
     },
   ],
 };
