@@ -109,10 +109,10 @@ export default function ResearchPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="clean-card group h-full p-12"
               >
-                <div className="flex items-start gap-8 h-full">
+                <div className="flex items-start gap-10 h-full">
 
                   {/* Left Icon */}
-                  <div className="relative h-24 w-24 flex-shrink-0">
+                  <div className="relative h-32 w-32 flex-shrink-0">
                     {area.icon ? (
                       <Image
                         src={urlForImage(area.icon).url()}
@@ -127,20 +127,20 @@ export default function ResearchPage() {
                   </div>
 
                   {/* Right Content */}
-                  <div className="flex flex-1 flex-col">
+                  <div className="flex flex-1 flex-col pt-1">
 
                     {/* Chinese Title */}
-                    <h3 className="text-2xl font-bold leading-tight text-black">
+                    <h3 className="text-xl font-bold leading-tight text-black">
                       {area.titleZh}
                     </h3>
 
                     {/* English Title */}
-                    <span className="mt-2 mb-5 text-sm font-medium uppercase tracking-[0.15em] text-gray-400">
+                    <span className="mt-1.5 mb-4 text-xs font-medium uppercase tracking-[0.18em] text-gray-400">
                       {area.titleEn}
                     </span>
 
                     {/* Description */}
-                    <p className="text-sm leading-[1.9] text-gray-600">
+                    <p className="text-[13px] leading-[1.85] text-gray-600">
                       {area.description}
                     </p>
 
