@@ -40,7 +40,7 @@ export default function ResearchPage() {
 
         const [areas, page] = await Promise.all([
           client.fetch(areasQuery),
-          client.fetch(pageQuery)
+          client.fetch(pageQuery),
         ]);
 
         setResearchAreas(areas);
@@ -69,7 +69,7 @@ export default function ResearchPage() {
         
         {/* Introduction Section */}
         <div className="mb-20">
-          <h1 className="text-4xl font-bold tracking-tight text-black mb-8">
+          <h1 className="mb-8 text-4xl font-bold tracking-tight text-black">
             研究方向｜Research
           </h1>
 
@@ -78,28 +78,28 @@ export default function ResearchPage() {
               {pageData.introduction.map((paragraph, index) => (
                 <p
                   key={index}
-                  className="text-base text-gray-600 leading-[1.8] text-justify"
+                  className="text-base leading-[1.8] text-gray-600 text-justify"
                 >
                   {paragraph}
                 </p>
               ))}
             </div>
           ) : (
-            <p className="text-lg text-gray-400 italic">
+            <p className="text-lg italic text-gray-400">
               Please add a research introduction in Sanity Studio.
             </p>
           )}
         </div>
 
-        {/* Research Areas Grid */}
+        {/* Research Areas */}
         {researchAreas.length === 0 ? (
-          <div className="text-center py-20 border-2 border-dashed border-gray-100 rounded-3xl">
-            <p className="text-gray-400 italic">
+          <div className="rounded-3xl border-2 border-dashed border-gray-100 py-20 text-center">
+            <p className="italic text-gray-400">
               No research areas listed yet. Add them in Sanity Studio.
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {researchAreas.map((area, index) => (
               <motion.div
                 key={area._id}
@@ -107,13 +107,12 @@ export default function ResearchPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="clean-card p-10 flex flex-col h-full"
+                className="clean-card group h-full p-12"
               >
-                {/* Header */}
-                <div className="flex items-center gap-6 mb-8">
-                  
-                  {/* Icon */}
-                  <div className="relative h-16 w-16 flex-shrink-0 flex items-center justify-center">
+                <div className="flex items-start gap-8 h-full">
+
+                  {/* Left Icon */}
+                  <div className="relative h-24 w-24 flex-shrink-0">
                     {area.icon ? (
                       <Image
                         src={urlForImage(area.icon).url()}
@@ -123,26 +122,30 @@ export default function ResearchPage() {
                         referrerPolicy="no-referrer"
                       />
                     ) : (
-                      <div className="bg-gray-100 w-full h-full rounded-xl" />
+                      <div className="h-full w-full rounded-2xl bg-gray-100" />
                     )}
                   </div>
 
-                  {/* Titles */}
-                  <div className="flex flex-col">
-                    <h3 className="text-xl font-bold text-black leading-tight">
+                  {/* Right Content */}
+                  <div className="flex flex-1 flex-col">
+
+                    {/* Chinese Title */}
+                    <h3 className="text-2xl font-bold leading-tight text-black">
                       {area.titleZh}
                     </h3>
 
-                    <span className="text-sm font-medium text-gray-400 uppercase tracking-wide mt-1">
+                    {/* English Title */}
+                    <span className="mt-2 mb-5 text-sm font-medium uppercase tracking-[0.15em] text-gray-400">
                       {area.titleEn}
                     </span>
+
+                    {/* Description */}
+                    <p className="text-sm leading-[1.9] text-gray-600">
+                      {area.description}
+                    </p>
+
                   </div>
                 </div>
-
-                {/* Description */}
-                <p className="text-gray-600 leading-relaxed text-sm">
-                  {area.description}
-                </p>
               </motion.div>
             ))}
           </div>
