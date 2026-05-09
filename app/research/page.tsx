@@ -15,7 +15,7 @@ interface ResearchArea {
 }
 
 interface ResearchPageData {
-  introduction: string;
+  introduction: string[];
 }
 
 export default function ResearchPage() {
@@ -33,6 +33,7 @@ export default function ResearchPage() {
           icon,
           description
         }`;
+
         const pageQuery = `*[_type == "researchPage"][0]{
           introduction
         }`;
@@ -65,15 +66,24 @@ export default function ResearchPage() {
   return (
     <main className="min-h-screen bg-white pb-24 pt-20">
       <div className="mx-auto max-w-7xl px-6">
+        
         {/* Introduction Section */}
         <div className="mb-20">
           <h1 className="text-4xl font-bold tracking-tight text-black mb-8">
             研究方向｜Research
           </h1>
-          {pageData?.introduction ? (
-            <p className="text-base text-gray-600 leading-[1.8] text-justify">
-              {pageData.introduction}
-            </p>
+
+          {pageData?.introduction?.length ? (
+            <div className="space-y-6">
+              {pageData.introduction.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className="text-base text-gray-600 leading-[1.8] text-justify"
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
           ) : (
             <p className="text-lg text-gray-400 italic">
               Please add a research introduction in Sanity Studio.
@@ -84,7 +94,9 @@ export default function ResearchPage() {
         {/* Research Areas Grid */}
         {researchAreas.length === 0 ? (
           <div className="text-center py-20 border-2 border-dashed border-gray-100 rounded-3xl">
-            <p className="text-gray-400 italic">No research areas listed yet. Add them in Sanity Studio.</p>
+            <p className="text-gray-400 italic">
+              No research areas listed yet. Add them in Sanity Studio.
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -97,9 +109,10 @@ export default function ResearchPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="clean-card p-10 flex flex-col h-full"
               >
-                {/* Header: Icon + Titles */}
+                {/* Header */}
                 <div className="flex items-center gap-6 mb-8">
-                  {/* Icon (1:1 ratio) */}
+                  
+                  {/* Icon */}
                   <div className="relative h-16 w-16 flex-shrink-0 flex items-center justify-center">
                     {area.icon ? (
                       <Image
@@ -114,11 +127,12 @@ export default function ResearchPage() {
                     )}
                   </div>
 
-                  {/* Titles (Left Aligned) */}
+                  {/* Titles */}
                   <div className="flex flex-col">
                     <h3 className="text-xl font-bold text-black leading-tight">
                       {area.titleZh}
                     </h3>
+
                     <span className="text-sm font-medium text-gray-400 uppercase tracking-wide mt-1">
                       {area.titleEn}
                     </span>

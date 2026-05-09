@@ -346,7 +346,9 @@ const researchPage: SchemaTypeDefinition = {
     {
       name: 'introduction',
       title: 'Introduction Text (页面顶部介绍)',
-      type: 'text',
+      type: 'array',
+      of: [{ type: 'text' }],
+      description: '每一段单独输入，会自动分段显示',
       validation: (Rule) => Rule.required(),
     },
   ],
